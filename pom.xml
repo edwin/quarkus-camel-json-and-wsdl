@@ -51,6 +51,12 @@
             <artifactId>camel-quarkus-direct</artifactId>
         </dependency>
 
+        <!-- soap -->
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-cxf-soap</artifactId>
+        </dependency>
+
         <!-- test dependencies -->
         <dependency>
             <groupId>io.quarkus</groupId>
