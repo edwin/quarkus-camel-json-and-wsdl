@@ -218,3 +218,84 @@ $ curl -kv http://localhost:8080/api/employees/edwin/kun
 	</xs:element>
 </xs:schema>
 ```
+
+## Health Check
+We are having a healthcheck provided by `microprofile-health` endpoint
+```
+$ curl -kv http://localhost:8080/q/health/ready
+*   Trying [::1]:8080...
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080
+> GET /q/health/ready HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/8.4.0
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json; charset=UTF-8
+< content-length: 717
+<
+{
+    "status": "UP",
+    "checks": [
+        {
+            "name": "camel-routes",
+            "status": "UP"
+        },
+        {
+            "name": "context",
+            "status": "UP",
+            "data": {
+                "context.phase": "5",
+                "context.name": "camel-1",
+                "context.version": "4.4.0.redhat-00025",
+                "context.status": "Started",
+                "check.kind": "ALL"
+            }
+        },
+        {
+            "name": "camel-consumers",
+            "status": "UP"
+        },
+        {
+            "name": "route-controller",
+            "status": "UP",
+            "data": {
+                "check.kind": "READINESS"
+            }
+        }
+    ]
+* Connection #0 to host localhost left intact
+}       
+
+$  curl -kv http://localhost:8080/q/health/live
+*   Trying [::1]:8080...
+*   Trying 127.0.0.1:8080...
+* Connected to localhost (127.0.0.1) port 8080
+> GET /q/health/live HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/8.4.0
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json; charset=UTF-8
+< content-length: 379
+<
+{
+    "status": "UP",
+    "checks": [
+        {
+            "name": "context",
+            "status": "UP",
+            "data": {
+                "context.phase": "5",
+                "context.name": "camel-1",
+                "context.version": "4.4.0.redhat-00025",
+                "context.status": "Started",
+                "check.kind": "ALL"
+            }
+        }
+    ]
+* Connection #0 to host localhost left intact
+}
+```

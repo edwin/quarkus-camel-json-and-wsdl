@@ -51,6 +51,12 @@
             <artifactId>camel-quarkus-direct</artifactId>
         </dependency>
 
+        <!-- health check -->
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-microprofile-health</artifactId>
+        </dependency>
+
         <!-- soap -->
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
